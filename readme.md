@@ -195,11 +195,11 @@ to analyze short texts.
 
 ## 5. C2 — Break Affine performance
 
-### 4.1 Measurement Setup
+### 5.1 Measurement Setup
 
-Same as Caesar's but dealing with a higher key space.
+Same as Caesar's but dealing with a higher key space, from k = n to k = (a,b).
 
-### 4.2 Data & Results Summary
+### 5.2 Data & Results Summary
 | Length | ES | EN | ES Text + ENG Table |
 |---:|---:|---:|---:|
 | 1 | 0.5% | 0.5% | 1.0% |
@@ -213,7 +213,7 @@ Same as Caesar's but dealing with a higher key space.
 | 100 | 100.0% | 100.0% | 97.5% |
 
 
-### 4.3 C3 — Measurements and Analysis
+### 5.3 C3 — Measurements and Analysis
 
 #### Number of candidates tested:
 For the affine cipher, the breaker tries every combination of a and b. a must be coprime with 26, thus, there are only 12 valid values for a.
@@ -226,6 +226,34 @@ Using the wrong frequency table we can't reach the 90% of reliability until the 
 Comparison with the Caesar's - C1
 The Caesar's breaker reached the 90% with length 20 in both lengths, the affine needs higher texts x1.5 and x2 compared with the caesar's.
 
+
+## 6. C2 — Break Vigenère performance
+
+### 6.1 Measurement Setup
+
+The Vigenère is tested over greater lengths, [60, 120, 200, 300], and with these different lengths we can measure how secure different keys are.
+The keys are: 3(HOL), 5(ARIHN), 7(ALEXDFZ) with different lengths each one. Here we can see the complexity of this cipher when the key is longer.
+Tested over 200 iterations we measure the different accuracies % in the following table.
+
+### 6.2 Data & Results Summary
+
+**ES**
+
+| Length | HOL (m=3) | ARIHN (m=5) | ALEXDFZ (m=7) |
+|---:|---:|---:|---:|
+| 60 | 91.5% | 58.5% | 15.0% |
+| 120 | 100.0% | 97.0% | 61.5% |
+| 200 | 100.0% | 100.0% | 85.5% |
+| 300 | 100.0% | 100.0% | 93.0% |
+
+**EN**
+
+| Length | HOL (m=3) | ARIHN (m=5) | ALEXDFZ (m=7) |
+|---:|---:|---:|---:|
+| 60 | 80.0% | 37.0% | 6.5% |
+| 120 | 98.5% | 88.0% | 49.5% |
+| 200 | 100.0% | 100.0% | 85.0% |
+| 300 | 100.0% | 100.0% | 100.0% |
 
 ## 7. Monoalphabetic Cipher vs AES-128
 
