@@ -167,15 +167,15 @@ For example if we have a key length of 5 we have 26^5 = 11.881.376 different key
 
 To evaluate the reliability and performance of the Break Caesar frequency based cryptanalysis, two random stories in Spanish and English were generated from which the different length texts came. Each fragment was encrypted using a randomly selected key, and the recovery accuracy (percentage of correctly decrypted keys/texts) was measured across three diferent scenarios:
 
-1. **Spanish Text with Spanish Frequency Table**
-2. **English Text with English Frequency Table**
-3. **English Text with Spanish Frequency Table**
+1. **Spanish Text and Spanish Frequency Table**
+2. **English Text and English Frequency Table**
+3. **Spanish Text and English Frequency Table "using the wrong table"**
 
 ---
 
 ### 4.2 Data & Results Summary
 
-| Text Length| Spanish | English | English Text + ES Table (Wrong Table) |
+| Text Length| Spanish | English | ES Text + ENG Table |
 |---:|---:|---:|---:|
 | **1** | 12.0% | 10.0% | 15.0% |
 | **5** | 61.0% | 52.5% | 47.5% |
@@ -200,7 +200,7 @@ to analyze short texts.
 Same as Caesar's but dealing with a higher key space.
 
 ### 4.2 Data & Results Summary
-| Length | ES | EN | EN (wrong table) |
+| Length | ES | EN | ES Text + ENG Table |
 |---:|---:|---:|---:|
 | 1 | 0.5% | 0.5% | 1.0% |
 | 5 | 14.0% | 10.5% | 11.5% |
@@ -213,13 +213,13 @@ Same as Caesar's but dealing with a higher key space.
 | 100 | 100.0% | 100.0% | 97.5% |
 
 
-## 6. C3 — Measurements and Analysis
+### 4.3 C3 — Measurements and Analysis
 
-Number of candidates tested:
+#### Number of candidates tested:
 For the affine cipher, the breaker tries every combination of a and b. a must be coprime with 26, thus, there are only 12 valid values for a.
 This gives us 12 x 26 = 312 candidate keys
 
-Shortest reliable length and comparison with C1:
+#### Shortest reliable length and comparison with C1:
 Using the same 90% reliability threshold defined earlier, the affine at length 30 for ES texts and 40 for ENG texts.
 Using the wrong frequency table we can't reach the 90% of reliability until the length of 100.
 
@@ -229,21 +229,7 @@ The Caesar's breaker reached the 90% with length 20 in both lengths, the affine 
 
 ## 7. Monoalphabetic Cipher vs AES-128
 
-The monoalphabetic cipher has a key space of:
-
-$$
-26! \approx 4 \times 10^{26}
-$$
-
-| Aspect | Monoalphabetic Cipher | AES-128 |
-|---|---|---|
-| Nominal key space | 26! ≈ 4 × 10²⁶ (~88 bits) | 2¹²⁸ |
-| Structure preserved? | Yes — each plaintext letter always maps to the same ciphertext letter | No — confusion and diffusion remove any statistical trace |
-| Statistical leakage | Letter frequencies, digrams/trigrams, repeated patterns, and word shapes survive encryption | None — every output bit depends nonlinearly on every key bit |
-| Effective search strategy | Guess a few high-frequency letters, infer the rest via pattern matching | No shortcut exists — must search the full key space |
-| Effective search space | Shrinks exponentially from 26! to a handful of guesses | Stays at the full 2¹²⁸ |
-| Practical break time | Minutes, by hand or with a simple frequency-analysis assistant | Computationally infeasible |
-| Why | Large key space is misleading — the cipher leaks structure that lets you avoid searching it | Smaller key space is what you're actually forced to search — the cipher leaks nothing |
+The key space size is not the important thing here, what matters is if the cipher leaks information or not. The monoalphabetic cipher always maps the same plaintext letter to the same ciphertext letter, so things like letter frequency, common patterns and word shapes stay visible even after encrypting. Thats why the C4 assistant (or a human) doesnt need to try the 26! keys, it just guesses the most frequent letters and from there the rest falls into place pretty fast. AES-128 is different, even with a smaller key space of 2^128, it doesnt leak any of this info because of confusion and diffusion, so there is no shortcut and the only way to break it is trying the full key space, which is not feasible in practice.
 
 ## 9. Limitations
 
