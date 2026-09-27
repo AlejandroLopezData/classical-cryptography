@@ -118,13 +118,6 @@ python3 crypto.py break vigenere --m 5 --in cipher.txt
 
 The --m option specifies the assumed length of the Vigenère key.
 
-### 2.5 Assistant
-
-```
-python3 crypto.py assist --in cipher.txt
-
-```
-
 ### 2.6 Input and Output Files
 
 The --in option specifies the input file.
@@ -182,7 +175,7 @@ To evaluate the reliability and performance of frequency-based cryptanalysis, ra
 
 ### 4.2 Data & Results Summary
 
-| Text Length ($L$) | Spanish Text + ES Table | English Text + EN Table | English Text + ES Table (Wrong Table) |
+| Text Length| Spanish | English | English Text + ES Table (Wrong Table) |
 |---:|---:|---:|---:|
 | **1** | 12.0% | 10.0% | 15.0% |
 | **5** | 61.0% | 52.5% | 47.5% |
