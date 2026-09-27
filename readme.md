@@ -1,4 +1,4 @@
-# 🔐 Cryptography Project
+# Cryptography Project
 
 *Classical ciphers, cryptanalysis, and frequency-analysis attacks implemented in Python.*
 
@@ -275,7 +275,7 @@ Tested over 200 iterations we measure the different accuracies % in the followin
 
 What it really matters is not the total length of the ciphered text, instead the sequence length.
 
-$$\text{Subsequence length} = \frac{\text{ciphertext\_len}}{m}$$
+$$Subsequence\ length = \frac{ciphertext\_len}{m}$$
 
 The attack divides the text into different sub sequences one for each of the key, and it applies the caesar's individually.
 
