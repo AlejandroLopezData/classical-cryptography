@@ -307,3 +307,13 @@ Some limitations of the implementation are:
 - A possible improvement would be to preserve the original text formatting (spaces, periods, and commas) in the output, instead of only returning the raw sequence of alphabet characters as it currently does.
 - Frequency-based cryptanalysis is less reliable on short ciphertexts, since longer ciphertexts provide more reliable statistical information. This affects the Caesar and Affine breakers directly.
 - The Vigenère breaker assumes the key length (m) is known or correctly guessed in advance; an incorrect m makes the attack unreliable regardless of ciphertext length.
+
+---
+
+## 9. LLM Usage
+
+Some LLMs as ChatGPT and Claude where used as a support tool, helping with some tasks:
+
+- **Test data generation (ChatGPT):** used to create the `en_text` and `es_text` reference corpora used as input for the breaking tests, lives in breack_caesar_test.py.
+- **Documentation formatting (Claude):** used to improve the visual presentation of this `README.md`, without altering its technical content.
+- **Code assistance (ChatGPT):** used to help write parts of `crypto.py`, specifically the command-line execution logic.
