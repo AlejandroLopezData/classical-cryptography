@@ -16,7 +16,7 @@ lista_es= creator(es_text,leng)
 
 
 def measure():
-    for language, text in [("es", es_text), ("en", en_text)]:
+    for language, text in [("es", es_text), ("en", en_text), ("en", es_text)]:
 
         print(language.upper())
         print("--------------------")

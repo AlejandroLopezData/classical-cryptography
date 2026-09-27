@@ -161,11 +161,11 @@ The monoalphabetic uses a permutation of the 26 letters. Therefore the keyspace 
 This cipher depends directly on the key length.
 For example if we have a key length of 5 we have 26^5 = 11.881.376 different keys in our key space.
 
-## 4. C1 — Measurements
+## 4. C1 — Break Caesar performance
 
 ### 4.1 Measurement Setup
 
-To evaluate the reliability and performance of frequency-based cryptanalysis, random text fragments were generated from reference texts in Spanish and English at lengths $L \in \{1, 5, 10, 20, 30, 40, 60, 100\}$. Each fragment was encrypted using a randomly selected key, and the recovery accuracy (percentage of correctly decrypted keys/texts) was measured across three distinct scenarios:
+To evaluate the reliability and performance of the Break Caesar frequency based cryptanalysis, two random stories in Spanish and English were generated from which the different length texts came. Each fragment was encrypted using a randomly selected key, and the recovery accuracy (percentage of correctly decrypted keys/texts) was measured across three diferent scenarios:
 
 1. **Spanish Text with Spanish Frequency Table**
 2. **English Text with English Frequency Table**
@@ -193,13 +193,36 @@ The breaker becomes reliable, let's fix a 90% accuracy to measure that. Thus, it
 The wrong table costs that in that 20 letter length the cipher is not reliable with a 78%, we need 30 letters to reach the 90%. Thus, we lose a 1/3 of the capacity
 to analyze short texts.
 
-## 5. C2 — Comparison with C1
+## 5. C2 — Break Affine performance
+
+### 4.1 Measurement Setup
+
+
+
+### 4.2 Data & Results Summary
+| Length | ES | EN | EN (wrong table) |
+|---:|---:|---:|---:|
+| 1 | 0.5% | 0.5% | 1.0% |
+| 5 | 14.0% | 10.5% | 11.5% |
+| 7 | 28.5% | 26.0% | 18.0% |
+| 10 | 51.5% | 31.5% | 32.5% |
+| 20 | 85.5% | 74.0% | 53.5% |
+| 30 | 97.5% | 87.5% | 66.0% |
+| 40 | 97.5% | 97.5% | 75.0% |
+| 60 | 97.0% | 100.0% | 82.5% |
+| 100 | 100.0% | 100.0% | 97.5% |
+
 
 ## 6. C3 — Measurements and Analysis
 
-## 7. C4 — Cryptogram and Assistant
+Number of candidates tested:
+For the affine cipher, the breaker tests every valid combination of (a, b). Since a must be coprime with 26, there are 12 valid values for a (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25), and b can take any of the 26 residues. This gives 12 × 26 = 312 candidate keys
 
-## 8. Monoalphabetic Cipher vs AES-128
+Shortest reliable length and comparison with C1:
+
+
+
+## 7. Monoalphabetic Cipher vs AES-128
 
 The monoalphabetic cipher has a key space of:
 
