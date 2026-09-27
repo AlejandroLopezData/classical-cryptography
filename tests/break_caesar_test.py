@@ -62,7 +62,3 @@ def measure():
 
 if __name__ == "__main__":
     measure()
-
-# we can observe that with a 95% of confidence the text can be broken if has more than 20 letters
-# but text of 5 can be too but with a 50% of prob, and txt of 10 with 80.5
-# i tested it with more lengths to see how it works in a better perspective
