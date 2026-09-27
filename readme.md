@@ -188,33 +188,10 @@ To evaluate the reliability and performance of frequency-based cryptanalysis, ra
 
 ---
 
-### 4.3 Analysis & Discussion
-
-#### 1. Reliability Threshold (At which length does the breaker become reliable?)
-- **Threshold for High Accuracy ($\ge 90\%$):**
-  - For **Spanish text**, the breaker reaches **98.5% reliability at length 20**.
-  - For **English text**, the breaker reaches **93.5% reliability at length 20** and achieves **100% perfect recovery at length 30**.
-- **Threshold for Perfect Accuracy ($100\%$):**
-  - The attack becomes **100% deterministic at $L \ge 40$** for both native language scenarios.
-- **Short Texts ($L \le 10$):**
-  - Below 10 characters, statistical noise dominates. Letter distribution in very short ciphertexts deviates significantly from general language monograms, causing frequent misclassifications.
-
-#### 2. Cost of Using the Wrong Language Frequency Table
-When attacking an English ciphertext using a Spanish frequency table (cross-language matching):
-
-- **Performance Degradation (Length 10 – 40):**
-  - At **$L = 20$**, accuracy drops from **93.5% down to 78.0%** (a **15.5% drop in accuracy**).
-  - At **$L = 40$**, native English matching hits **100%**, whereas the wrong table lags behind at **91.0%** (a **9% error penalty**).
-- **Asymptotic Recovery ($L \ge 60$):**
-  - Even with an incorrect reference table, as text length increases to $L = 60$ and $L = 100$, accuracy converges back toward **99.5% – 100%**.
-  - *Why this happens:* While letter frequencies differ between English and Spanish (e.g., higher frequency of 'E' and 'A' in both, but different proportions for 'T', 'O', 'S', and 'N'), both languages share enough structural statistical commonalities over large sample sizes to identify the correct shift once enough data eliminates random noise.
-
----
-
-### 4.4 Conclusion
-
-1. **Reliability Limit:** The Caesar breaker is considered **fully reliable at $L \ge 30$ characters**, reaching $100\%$ accuracy for native texts.
-2. **Wrong Table Cost:** Using the wrong language table costs **up to $15.5\%$ in recovery accuracy** on short-to-medium texts ($L = 20$), requiring roughly **20–30 additional characters** of ciphertext to achieve the same confidence level as matching the correct native language table.
+### 4.3 Analysis
+The breaker becomes reliable, let's fix a 90% accuracy to measure that. Thus, it becomes reliable reaching the 20 letter length text in both cases EN and ES.
+The wrong table costs that in that 20 letter length the cipher is not reliable with a 78%, we need 30 letters to reach the 90%. Thus, we lose a 1/3 of the capacity
+to analyze short texts.
 
 ## 5. C2 — Comparison with C1
 
