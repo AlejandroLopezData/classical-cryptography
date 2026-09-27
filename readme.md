@@ -235,7 +235,15 @@ $$
 26! \approx 4 \times 10^{26}
 $$
 
-which corresponds to approximately 88 bits of key space. This is larger than the key space of an 88-bit key, but the size of the key space alone does not determine the practical security of a cipher. In a monoalphabetic substitution cipher, each plaintext letter is always replaced by the same ciphertext letter. This preserves statistical properties of the language, such as letter frequencies, repeated patterns, and word structures. These properties can be exploited by a human or by the cryptanalysis assistant to reduce the effective search space dramatically. AES-128 has a key space of ($2^{128}$), but more importantly, it is specifically designed to avoid exploitable statistical relationships of this kind. Therefore, the monoalphabetic cipher can be broken using its structural weaknesses despite its large nominal key space, whereas the same type of frequency-analysis approach does not provide a practical method for recovering an AES-128 key.
+| Aspect | Monoalphabetic Cipher | AES-128 |
+|---|---|---|
+| Nominal key space | 26! ≈ 4 × 10²⁶ (~88 bits) | 2¹²⁸ |
+| Structure preserved? | Yes — each plaintext letter always maps to the same ciphertext letter | No — confusion and diffusion remove any statistical trace |
+| Statistical leakage | Letter frequencies, digrams/trigrams, repeated patterns, and word shapes survive encryption | None — every output bit depends nonlinearly on every key bit |
+| Effective search strategy | Guess a few high-frequency letters, infer the rest via pattern matching | No shortcut exists — must search the full key space |
+| Effective search space | Shrinks exponentially from 26! to a handful of guesses | Stays at the full 2¹²⁸ |
+| Practical break time | Minutes, by hand or with a simple frequency-analysis assistant | Computationally infeasible |
+| Why | Large key space is misleading — the cipher leaks structure that lets you avoid searching it | Smaller key space is what you're actually forced to search — the cipher leaks nothing |
 
 ## 9. Limitations
 
