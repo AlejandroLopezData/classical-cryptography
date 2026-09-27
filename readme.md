@@ -169,7 +169,7 @@ To evaluate the reliability and performance of the Break Caesar frequency based 
 
 1. **Spanish Text with Spanish Frequency Table**
 2. **English Text with English Frequency Table**
-3. **English Text evaluated against a Spanish Frequency Table**
+3. **English Text with Spanish Frequency Table**
 
 ---
 
@@ -197,7 +197,7 @@ to analyze short texts.
 
 ### 4.1 Measurement Setup
 
-
+Same as Caesar's but dealing with a higher key space.
 
 ### 4.2 Data & Results Summary
 | Length | ES | EN | EN (wrong table) |
@@ -216,10 +216,15 @@ to analyze short texts.
 ## 6. C3 — Measurements and Analysis
 
 Number of candidates tested:
-For the affine cipher, the breaker tests every valid combination of (a, b). Since a must be coprime with 26, there are 12 valid values for a (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25), and b can take any of the 26 residues. This gives 12 × 26 = 312 candidate keys
+For the affine cipher, the breaker tries every combination of a and b. a must be coprime with 26, thus, there are only 12 valid values for a.
+This gives us 12 x 26 = 312 candidate keys
 
 Shortest reliable length and comparison with C1:
+Using the same 90% reliability threshold defined earlier, the affine at length 30 for ES texts and 40 for ENG texts.
+Using the wrong frequency table we can't reach the 90% of reliability until the length of 100.
 
+Comparison with the Caesar's - C1
+The Caesar's breaker reached the 90% with length 20 in both lengths, the affine needs higher texts x1.5 and x2 compared with the caesar's.
 
 
 ## 7. Monoalphabetic Cipher vs AES-128
