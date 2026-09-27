@@ -182,6 +182,8 @@ To evaluate the reliability and performance of the Break Caesar frequency based 
 2. **English Text and English Frequency Table**
 3. **Spanish Text and English Frequency Table** *(using the wrong table)*
 
+Where the Frequency Tables are the statistical % of appearance of the letters on different languages, saved in frequencies.py.
+
 ### 4.2 Data & Results Summary
 
 | Text Length | Spanish | English | ES Text + ENG Table |
@@ -207,7 +209,7 @@ The wrong table costs that in that 20 letter length the cipher is not reliable w
 
 ### 5.1 Measurement Setup
 
-Same as Caesar's but dealing with a higher key space, from k = n to k = (a,b).
+Same setup as Caesar's but dealing with a higher key space, from k = n to k = (a,b).
 
 ### 5.2 Data & Results Summary
 
